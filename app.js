@@ -1,0 +1,227 @@
+// const express      = require('express');
+// const path         = require('path');
+// const favicon      = require('serve-favicon');
+// const logger       = require('morgan');
+// const cookieParser = require('cookie-parser');
+// const bodyParser   = require('body-parser');
+// const layouts      = require('express-ejs-layouts');
+//
+//
+// const app = express();
+//
+// // view engine setup
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'ejs');
+//
+// // default value for title local
+// app.locals.title = 'Express - Generated with IronGenerator';
+//
+// // uncomment after placing your favicon in /public
+// //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(logger('dev'));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.use(layouts);
+//
+// const index = require('./routes/index');
+// app.use('/', index);
+//
+// // catch 404 and forward to error handler
+// app.use((req, res, next) => {
+//   const err = new Error('Not Found');
+//   err.status = 404;
+//   next(err);
+// });
+//
+// // error handler
+// app.use((err, req, res, next) => {
+//   // set locals, only providing error in development
+//   res.locals.message = err.message;
+//   res.locals.error = req.app.get('env') === 'development' ? err : {};
+//
+//   // render the error page
+//   res.status(err.status || 500);
+//   res.render('error');
+// });
+//
+// module.exports = app;
+
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+//Routes
+const index = require('./routes/index');
+const users = require('./routes/users');
+const travels = require('./routes/travels');
+const pads = require('./routes/pads');
+const app = express();
+//layouts
+const expressLayouts = require('express-ejs-layouts');
+
+//Mongoose setup
+const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/travelpad');
+
+//configure layouts
+app.use(expressLayouts);
+app.set('layout', 'layouts/main-layout');
+
+const User       = require("./models/user");
+
+// Requiring Facebook and google account authentication
+const FbStrategy = require('passport-facebook').Strategy;
+const GoogleStrategy = require("passport-google-oauth").OAuth2Strategy;
+//Passport
+const session       = require("express-session");
+const bcrypt        = require("bcrypt");
+const passport      = require("passport");
+const LocalStrategy = require("passport-local").Strategy;
+const flash = require("connect-flash");
+
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
+//Express session
+app.use(session({
+  secret: "our-passport-local-strategy-app",
+  resave: true,
+  saveUninitialized: true
+}));
+//Passport Methods
+passport.serializeUser((user, cb) => {
+  cb(null, user.id);
+});
+
+passport.deserializeUser((id, cb) => {
+  User.findOne({ "_id": id }, (err, user) => {
+    if (err) { return cb(err); }
+    cb(null, user);
+  });
+});
+app.use(flash());
+passport.use(new LocalStrategy({
+  passReqToCallback: true
+},
+(req, username, password, next) => {
+  User.findOne({ username }, (err, user) => {
+    if (err) {
+      return next(err);
+    }
+    if (!user) {
+      return next(null, false, { message: "Incorrect username" });
+    }
+    if (!bcrypt.compareSync(password, user.password)) {
+      return next(null, false, { message: "Incorrect password" });
+    }
+
+    return next(null, user);
+  });
+}));
+//Initialization
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Send objct user from req to res
+app.use(function(req, res, next){
+  res.locals.user = req.user;
+  //res.locals.authenticated = ! req.user.anonymous;
+  next();
+});
+
+
+const authRoutes = require("./routes/auth-routes");
+app.use('/', authRoutes);
+
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+// uncomment after placing your favicon in /public
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.png')));
+
+
+app.use('/', index);
+app.use('/users', users);
+app.use('/travels', travels);
+app.use('/pads', pads);
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
+});
+
+passport.use(new FbStrategy({
+  clientID: "484686601915178",
+  clientSecret: "7a03f57e88fde01e981620b5dbc5ee5b",
+  callbackURL: "http://localhost:3000/auth/facebook/callback"
+}, (accessToken, refreshToken, profile, done) => {
+  User.findOne({ username: profile._json.name }, (err, user) => {
+  if (err) { return done(err); }
+  if (user === null){
+    var newUser = new User({
+      username: profile._json.name,
+      facebookID: profile._json.id
+    });
+    newUser.save((err) => {
+      if (err) {return done(err);}
+      return done(null, newUser);
+    });
+  } else {
+   done(null, user);
+   }
+  });
+}));
+//username: profile.emails[0].value  googleID: profile.id
+passport.serializeUser((user, next) => {
+  next(null, user);
+});
+passport.deserializeUser((user, next) => {
+  next(null, user);
+});
+passport.use(new GoogleStrategy({
+  clientID: "741645076425-jaum9h3fmg82ubfepbbu52sj1c74185m.apps.googleusercontent.com",
+  clientSecret: "5v_YzjAabKK6xMktySIZJv_H",
+  // callbackURL: "http://localhost:3000/auth/google/callback"
+  callbackURL: "/google/success"
+}, 
+(accessToken, refreshToken, profile, done) => {
+  User.findOne({ username: profile.emails[0].value }, (err, user) => {
+    if (user === null){
+      var newUser = new User({
+        username: profile.emails[0].value,
+        googleID: profile.id
+      });
+      newUser.save((err) => {
+        if (err) { return done(err);}
+        return done(null, newUser);
+      });
+    } else {
+       done(null, user);
+    }
+  });
+}));
+
+module.exports = app;

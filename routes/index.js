@@ -1,0 +1,15 @@
+const express = require('express');
+const router = express.Router();
+
+const passport = require ("passport");
+const authRoutes = express.Router();
+const ensureLogin = require("connect-ensure-login");
+// User model
+const User       = require("../models/user");
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  res.render('index', { title: 'TravelPad', user: req.user });
+});
+
+module.exports = router;
