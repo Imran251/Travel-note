@@ -37,7 +37,8 @@ router.post('/', ensureLoggedIn('/login'), (req, res, next) => {
 
   newTravel.save( (err) => {
     if (err) {
-      res.render('travels/new', { travel: newTravel, countries: COUNTRIES });
+      res.render('travels/new',
+      { travel: newTravel, countries: COUNTRIES });
     } else {
       res.redirect('/travels');
       //res.redirect(`/travel/${newTravel._id}`);
@@ -59,7 +60,7 @@ router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
       .exec( (err, pads) => {
         res.render('travels/detail', { travels: travels, pads: pads});
       });
-    }else{
+    } else {
       Pads.find({'_travelId': id, visible: true})
       .exec( (err, pads) => {
         res.render('travels/detail', { travels: travels, pads: pads});
