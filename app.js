@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+require("dotenv").config();
 //Routes
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -15,7 +16,7 @@ const expressLayouts = require('express-ejs-layouts');
 
 //Mongoose setup
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/travel-note');
+mongoose.connect(process.env.DATABASE_URL);
 
 //configure layouts
 app.use(expressLayouts);
