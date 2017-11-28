@@ -11,8 +11,9 @@ body {
   padding: 50px;
   /*font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;*/
   font-family: "Kalam";
-  background-image: url(/images/pexels-photo_1920.jpg);
+  /*background-image: url(/images/pexels-photo_1920.jpg);*/
   background-size: cover;
+  background-color: brown;
 }
 
 h1, h2, h3 {

@@ -1,13 +1,15 @@
 module.exports = [
+  "USA",
+  "India",
   "Spain",
   "Germany",
-  "Frace",
+  "France",
   "Japan",
-  "Chine",
+  "China",
   "Australia",
   "Mexico",
   "Russia",
   "Italy",
   "Perú",
-  "Kenya"
+  "New Zealand"
 ];

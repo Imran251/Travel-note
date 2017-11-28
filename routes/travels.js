@@ -62,7 +62,7 @@ router.get('/:id', ensureLoggedIn('/login'), (req, res, next) => {
       });
     } else {
       Pads.find({'_travelId': id, visible: true})
-      .exec( (err, pads) => {
+      .exec( (err, pads) => { 
         res.render('travels/detail', { travels: travels, pads: pads});
       });
     }
