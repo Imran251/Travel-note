@@ -43,7 +43,8 @@ router.get('/:id', (req, res) => {
 
 router.get('/new/:id', (req, res) => {
   let travelId = req.params.id;
-  res.render('pads/new', { countries: COUNTRIES, travelId:travelId});
+  res.render('pads/new',
+  { countries: COUNTRIES, travelId:travelId});
 });
 
 router.get('/delete/:id/:idTravel', (req, res, next) => {
