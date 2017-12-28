@@ -20,3 +20,13 @@ const countries = [
      "Perú",
      "Kenya"
 ];
+
+user.create(users, (err, docs) => {
+  if (err) {
+    throw err;
+  }
+  docs.forEach((user) => {
+    console.log(user.username);
+  });
+
+});
