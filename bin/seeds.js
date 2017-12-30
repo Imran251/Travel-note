@@ -30,3 +30,12 @@ user.create(users, (err, docs) => {
   });
 
 });
+
+travel.create(travels, (err, docs) => {
+  if (err) {
+    throw err;
+  }
+  docs.forEach((travel) => {
+    console.log(travel.title);
+  });
+});
