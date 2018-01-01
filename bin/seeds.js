@@ -44,9 +44,9 @@ pad.create(pads, (err, docs) => {
   if (err) {
     throw err;
   }
+
+  docs.forEach((pad) => {
+    console.log(pad.title);
+  });
 });
-//   docs.forEach((pad) => {
-//     console.log(pad.title);
-//   });
-// });
-// mongoose.connection.close();
+mongoose.connection.close();
