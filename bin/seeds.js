@@ -39,3 +39,14 @@ travel.create(travels, (err, docs) => {
     console.log(travel.title);
   });
 });
+
+pad.create(pads, (err, docs) => {
+  if (err) {
+    throw err;
+  }
+});
+//   docs.forEach((pad) => {
+//     console.log(pad.title);
+//   });
+// });
+// mongoose.connection.close();
