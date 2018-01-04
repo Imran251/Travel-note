@@ -37,6 +37,10 @@ const pads = [
      description: "My amazing journey to Berlin",
     //  location: [13.404954,52.520008],
      country:"Germany",
+     pic_name:"005.jpg",
+     pic_path:"/uploads/005",
+     visible: false,
+     travelId  : ObjectId('591434a7b3f2f3440f1628d5')
 }
 ];
 
