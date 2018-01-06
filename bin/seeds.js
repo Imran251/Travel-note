@@ -44,6 +44,16 @@ const pads = [
 }
 ];
 
+const travels = [
+{
+     title: "India",
+     description: "2 weeks in this amazing country. I really don't know what to expect!",
+     travelDate:"2017-07-11 00:00:00.000Z",
+     countries:"India",
+     _userId  : ObjectId("000000000000000000000001")
+}
+];
+
 user.create(users, (err, docs) => {
   if (err) {
     throw err;
