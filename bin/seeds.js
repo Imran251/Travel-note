@@ -41,6 +41,13 @@ const pads = [
      pic_path:"/uploads/005",
      visible: false,
      travelId  : ObjectId('591434a7b3f2f3440f1628d5')
+},
+{
+     title: "Madrid",
+     description: "My amazing journey to Madrid",
+    //  location  : [-3.703790,40.416775],
+     country:"Spain",
+     pic_name:"003.jpg",
 }
 ];
 
