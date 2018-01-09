@@ -48,6 +48,9 @@ const pads = [
     //  location  : [-3.703790,40.416775],
      country:"Spain",
      pic_name:"003.jpg",
+     pic_path:"/uploads/003",
+     visible: true,
+     travelId  : ObjectId('5913d6f69252b7395548809b')
 }
 ];
 
