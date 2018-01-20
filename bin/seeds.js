@@ -64,8 +64,8 @@ const travels = [
      _userId  : ObjectId("000000000000000000000001")
 },
 {
-     title: "Berlin",
-     description: "My amazing journey to Berlin",
+     title: "Miami",
+     description: "My amazing journey to Miami",
     //  location: [13.404954,52.520008],
      country:"Germany",
      pic_name:"005.jpg",
