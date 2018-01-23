@@ -20,7 +20,8 @@ const countries = [
      "Italy",
      "Perú",
      "Kenya",
-     "New Zealand"
+     "New Zealand",
+     "Dubai"
 ];
 
 const pads = [
