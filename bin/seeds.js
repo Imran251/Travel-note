@@ -54,6 +54,16 @@ const pads = [
      pic_path:"/uploads/003",
      visible: true,
      travelId  : ObjectId('5913d6f69252b7395548809b')
+},
+{
+     title: "Tokyo",
+     description: "My amazing journey to Tokyo",
+    //  location: [35.652832,139.839478],
+     country:"Japan",
+     pic_name:"002.jpg",
+     pic_path:"/uploads/002",
+     visible: true,
+     travelId  : ObjectId('591434a7b3f2f3440f1628d5')
 }
 ];
 
