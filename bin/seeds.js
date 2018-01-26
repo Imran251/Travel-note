@@ -46,10 +46,10 @@ const pads = [
      travelId  : ObjectId('591434a7b3f2f3440f1628d5')
 },
 {
-     title: "Madrid",
-     description: "My amazing journey to Madrid",
+     title: "Miami",
+     description: "My amazing journey to Miami",
     //  location  : [-3.703790,40.416775],
-     country:"Spain",
+     country:"USA",
      pic_name:"003.jpg",
      pic_path:"/uploads/003",
      visible: true,
