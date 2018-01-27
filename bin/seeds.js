@@ -8,6 +8,7 @@ const ObjectId  = require('mongoose').Types.ObjectId;
 
 mongoose.connect('mongodb://localhost/notetravel');
 const countries = [
+      "USA",
      "India",
      "Spain",
      "Germany",
