@@ -84,7 +84,14 @@ const travels = [
      pic_path:"/uploads/005",
      visible: false,
      travelId  : ObjectId('591434a7b3f2f3440f1628d5')
-}
+},
+{
+     title: "Spain",
+     description: "2 weeks in this amazing country. I really don't know what to expect!",
+     travelDate:"2017-011-11 00:00:00.000Z",
+     countries:"Spain",
+     _userId  : ObjectId("000000000000000000000003")
+},
 ];
 
 user.create(users, (err, docs) => {
