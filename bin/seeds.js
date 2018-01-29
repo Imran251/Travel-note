@@ -65,6 +65,16 @@ const pads = [
      pic_path:"/uploads/002",
      visible: true,
      travelId  : ObjectId('591434a7b3f2f3440f1628d5')
+},
+{
+     title: "Auckland",
+     description: "My amazing journey to Auckland",
+    //  location: [-1.2920659,36.82194619999996],
+     country:"New Zealand",
+     pic_name:"004.jpg",
+     pic_path:"/uploads/004",
+     visible: true,
+     travelId  : ObjectId('5913d6f69252b7395548809b')
 }
 ];
 
