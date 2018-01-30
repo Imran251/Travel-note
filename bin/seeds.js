@@ -103,6 +103,13 @@ const travels = [
      countries:"Spain",
      _userId  : ObjectId("000000000000000000000003")
 },
+{
+     title: "New Zealand",
+     description: "2 weeks in this amazing country. I really don't know what to expect!",
+     travelDate:"2017-03-11 00:00:00.000Z",
+     countries:"New Zealand",
+     _userId  : ObjectId("000000000000000000000004")
+},
 ];
 
 user.create(users, (err, docs) => {
