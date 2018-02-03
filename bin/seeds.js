@@ -99,7 +99,7 @@ const travels = [
 {
      title: "Spain",
      description: "2 weeks in this amazing country. I really don't know what to expect!",
-     travelDate:"2017-011-11 00:00:00.000Z",
+     travelDate:"2017-011-10 00:00:00.000Z",
      countries:"Spain",
      _userId  : ObjectId("000000000000000000000003")
 },
