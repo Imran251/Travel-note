@@ -15,3 +15,4 @@ A travel is like a travel notebook.
 Pads
 Create an annotation quickly, do not waste time asking where you are, simply create an automatically geolocated pad and title it, and if you want add a longer description and a photo, and mark if this visit will be visible to the rest. The date and time will be saved automatically.
 
+Live site: https://notetravel.herokuapp.com/

@@ -90,11 +90,18 @@ const travels = [
      title: "Miami",
      description: "My amazing journey to Miami",
     //  location: [13.404954,52.520008],
-     country:"Germany",
+     country:"USA",
      pic_name:"005.jpg",
      pic_path:"/uploads/005",
      visible: false,
      travelId  : ObjectId('591434a7b3f2f3440f1628d5')
+},
+{
+     title: "Japan",
+     description: "2 weeks in this amazing country. I really don't know what to expect!",
+     travelDate:"2017-09-11 00:00:00.000Z",
+     countries:"Japan",
+     _userId  : ObjectId("000000000000000000000002")
 },
 {
      title: "Spain",
