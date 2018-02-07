@@ -124,7 +124,13 @@ const users = [
      username   : "Imran",
      password   : "1234",
      _id  : ObjectId("000000000000000000000001")
+},
+{
+     username   : "Babbu",
+     password   : "4321",
+     _id  : ObjectId("000000000000000000000002")
 }
+
 ];
 
 user.create(users, (err, docs) => {
