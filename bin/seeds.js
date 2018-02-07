@@ -119,6 +119,14 @@ const travels = [
 },
 ];
 
+const users = [
+{
+     username   : "Imran",
+     password   : "1234",
+     _id  : ObjectId("000000000000000000000001")
+}
+];
+
 user.create(users, (err, docs) => {
   if (err) {
     throw err;
