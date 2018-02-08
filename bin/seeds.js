@@ -129,7 +129,13 @@ const users = [
      username   : "Babbu",
      password   : "4321",
      _id  : ObjectId("000000000000000000000002")
+},
+{
+     username   : "Lautu",
+     password   : "1234",
+     _id  : ObjectId("000000000000000000000003")
 }
+
 
 ];
 
