@@ -139,6 +139,11 @@ const users = [
      username   : "Mauro",
      password   : "1234",
      _id  : ObjectId("000000000000000000000004")
+},
+{
+     username   : "Seea",
+     password   : "1234",
+     _id  : ObjectId("000000000000000000000004")
 }
 
 
