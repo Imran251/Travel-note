@@ -117,6 +117,14 @@ const travels = [
      countries:"New Zealand",
      _userId  : ObjectId("000000000000000000000004")
 },
+{
+
+     title: "Milan",
+     description: "2 weeks in this amazing country. I really don't know what to expect!",
+     travelDate:"2017-03-11 00:00:00.000Z",
+     countries:"Italy",
+     _userId  : ObjectId("000000000000000000000004")
+}
 ];
 
 const users = [
