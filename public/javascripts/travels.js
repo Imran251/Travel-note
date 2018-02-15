@@ -5,7 +5,7 @@ $('.btnDelete' ).click(function(e) {
       url: '/travels/'+id,
       type: 'DELETE',
       success: function(result){window.location.reload();},
-      error: function(result){alert("error");}
+      error: function(result){alert("error was found");}
   });
 
   function success(result) {
