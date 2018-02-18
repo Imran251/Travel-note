@@ -14,7 +14,7 @@ function geolocation (){
   function onPositionReceived(position){
     document.getElementById('lat').value = position.coords.latitude;
     document.getElementById('lng').value = position.coords.longitude;
-    console.log("hello");
+    console.log("Hello People");
     startMap(position);
   }
   if (navigator.geolocation){
